@@ -14,6 +14,9 @@ import { SobreComponent } from './sobre/sobre.component';
 import { ContatoComponent } from './contato/contato.component';
 import { LoginComponent } from './login/login.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { FeedComponent } from './feed/feed.component';
+import { PostTemaComponent } from './post-tema/post-tema.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     ContatoComponent,
     LoginComponent,
     CadastroComponent,
+    PerfilComponent,
+    FeedComponent,
+    PostTemaComponent,
   
   ],
   imports: [
