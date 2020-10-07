@@ -27,9 +27,9 @@
           <div class="col-md-6">
             <div class="form-group m-0">
               <label for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
-              <select name="tema" id='tema' class="form-control">
-                <option>
-                Opção 1
+              <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
+                <option *ngFor='let item of listaTemas' value={{item.id}} >
+                  {{item.descricao}}
                 </option>
               </select>
             </div>
@@ -66,16 +66,16 @@
                 <button class="btn btn-outline-warning w-100" type="button" >Pesquisar</button>
               </div>
             </div>
-  
+
             <div class="row">
               <div class="col-md-12">
   
-                <div class="card mt-5 mb-5">
+                <div class="card mt-5 mb-5" *ngFor="let item of listaPostagens | orderBy : key : reverse">
                   <div class="card-header">
                       <div class="row d-flex align-items-center">
                           <div class="col-md-8">
-                              <h5 class="card-title"> </h5>
-                              <small> </small>
+                              <h5 class="card-title">{{item.titulo}} </h5>
+                              <small>  {{item.tema.descricao}} </small>
                           </div>
                           <div class="col-md-4 d-flex justify-content-end">
   
@@ -92,11 +92,11 @@
                   </div>
   
                   <div class="card-body" >
-                    <p class="card-text" aria-describedby="texto">  </p>
+                    <p class="card-text" aria-describedby="texto"> {{item.texto}}  </p>
                     <small id="texto" class="form-text m-0 text-muted mb-3 text-monospace">
-                      Postado em: </small>
+                      Postado em: {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date:'HH:mm'}} </small>
                   </div>
-              </div>
+                </div>
               </div>
             </div>
           </div>
@@ -128,9 +128,10 @@
                       </div>
                   </div>
   
-                  <div class="card-body" >
-                    <p class="card-text" aria-describedby="texto">  </p>
-                    <small id="texto" class="form-text m-0 text-muted mb-3 text-monospace">Postado em</small>
+                  <div class="card-body" *ngFor="let item of listaPostagens | orderBy : key : reverse">
+                    <p class="card-text" aria-describedby="texto"> {{item.texto}} </p>
+                    <small id="texto" class="form-text m-0 text-muted mb-3 text-monospace">
+                      Postado em: {{item.data | date: 'dd/MM/yyyy'}} às {{item.data | date:'HH:mm'}}</small>
                   </div>
         <!--/Caixa de postagem e postagens por tema-->
                   </div>
